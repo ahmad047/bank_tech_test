@@ -6,4 +6,8 @@ describe BankAccount do
   it 'should start with a balance of zero' do
     expect(bank_account.balance).to eq 0
   end
+
+  it 'should start with no transactions' do
+    expect(bank_account.transactions).to eq []
+  end
 end
