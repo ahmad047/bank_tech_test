@@ -1,5 +1,4 @@
 require 'bank_account'
-require 'transaction'
 
 describe BankAccount do
   let(:bank_account) { described_class.new }

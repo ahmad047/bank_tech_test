@@ -9,15 +9,13 @@ class BankAccount
   end
 
   def deposit(amount)
-    increase_balance(amount)
-    transaction = Transaction.new(credit: amount, balance: @current_balance)
-    @transactions << transaction
+    increase_balance(amount) 
+    @transactions << Transaction.new(credit: amount, balance: @current_balance)
   end
 
   def withdraw(amount)
     decrease_balance(amount)
-    transaction = Transaction.new(debit: amount, balance: @current_balance)
-    @transactions << transaction
+    @transactions << Transaction.new(debit: amount, balance: @current_balance)
   end
 
   private
