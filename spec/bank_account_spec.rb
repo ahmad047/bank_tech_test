@@ -41,5 +41,10 @@ describe BankAccount do
       expect(bank_account.transactions.last.debit).to eq 100
       expect(bank_account.transactions.last.balance).to eq 400
     end
+
+    it 'raises an error for not enough funds' do
+      bank_account.deposit(5)
+      expect { bank_account.withdraw(10) }.to raise_error('Not enough funds to withdraw. Available balance: 5')
+    end
   end
 end

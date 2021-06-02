@@ -14,6 +14,8 @@ class BankAccount
   end
 
   def withdraw(amount)
+    raise "Not enough funds to withdraw. Available balance: #{@current_balance}" if insufficient_funds?(amount)
+
     decrease_balance(amount)
     @transactions << Transaction.new(debit: amount, balance: @current_balance)
   end
@@ -26,5 +28,9 @@ class BankAccount
 
   def decrease_balance(amount)
     @current_balance -= amount
+  end
+
+  def insufficient_funds?(amount)
+    @current_balance < amount
   end
 end
