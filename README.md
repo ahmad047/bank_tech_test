@@ -2,24 +2,9 @@
 
 Welcome to my solution to the bank tech test.
 
-## User Stories
+## User Stories and Domain Model
 
-```
-As a customer
-So that I can manage my money
-I want to be able to able to open a new bank account
+User stories and domain model can be found [here](https://docs.google.com/document/d/1Z-xaNT9Io60fmxJo41GX20VNreu6yiRZtL4UJEc9kt4/edit?usp=sharing)
 
-As a customer
-So that I can manage my money
-I want to be able to able to able to make a desposit which should increase my balance
-
-As a customer
-So that I can manage my money
-I want to be able to be able to make a withdrawal which should decrease my balance
-
-As a customer
-So that I can manage my money
-I want to be able to be able to print a bank statement which shows me detailed transactions
-```
 
 ## How to use
