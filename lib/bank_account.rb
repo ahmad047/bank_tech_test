@@ -20,10 +20,9 @@ class BankAccount
 
   def print_statement
     print_header
-    @transactions.reverse.each {
-      |transaction|
-      puts "#{transaction.date} || #{'%.2f'%transaction.credit} || #{'%.2f'%transaction.debit} || #{'%.2f'%transaction.balance}"
-    }
+    @transactions.reverse.each do |transaction|
+      puts "#{transaction.date} || #{'%.2f' % transaction.credit} || #{'%.2f' % transaction.debit} || #{'%.2f' % transaction.balance}"
+    end
   end
 
   private
@@ -45,6 +44,6 @@ class BankAccount
   end
 
   def print_header
-    puts "date || credit || debit || balance" unless @transactions.nil?
+    puts 'date || credit || debit || balance' unless @transactions.nil?
   end
 end
