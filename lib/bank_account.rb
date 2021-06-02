@@ -5,4 +5,8 @@ class BankAccount
     @balance = 0
     @transactions = []
   end
+
+  def create_transaction(value)
+    @balance += value
+  end
 end
