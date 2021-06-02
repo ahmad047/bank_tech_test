@@ -1,4 +1,5 @@
 require 'bank_account'
+require 'transaction'
 
 describe BankAccount do
   let(:bank_account) { described_class.new }
@@ -19,10 +20,10 @@ describe BankAccount do
 
     it 'should save the transaction on deposit' do
       bank_account.deposit(500)
-      expect(bank_account.transactions[0][:balance]).to eq 500
-      expect(bank_account.transactions[0][:credit]).to eq 500
-      expect(bank_account.transactions[0][:debit]).to eq 0
-      expect(bank_account.transactions[0][:date]).to eq Time.now.strftime('%d/%m/%Y')
+      expect(bank_account.transactions.first.date).to eq Time.now.strftime('%d/%m/%Y')
+      expect(bank_account.transactions.first.credit).to eq 500
+      expect(bank_account.transactions.first.debit).to eq ''
+      expect(bank_account.transactions.first.balance).to eq 500
     end
   end
 
@@ -36,10 +37,10 @@ describe BankAccount do
     it 'should save the transaction on withdraw' do
       bank_account.deposit(500)
       bank_account.withdraw(100)
-      expect(bank_account.transactions[1][:balance]).to eq 400
-      expect(bank_account.transactions[0][:credit]).to eq 500
-      expect(bank_account.transactions[1][:debit]).to eq 100
-      expect(bank_account.transactions[1][:date]).to eq Time.now.strftime('%d/%m/%Y')
+      expect(bank_account.transactions.last.date).to eq Time.now.strftime('%d/%m/%Y')
+      expect(bank_account.transactions.last.credit).to eq ''
+      expect(bank_account.transactions.last.debit).to eq 100
+      expect(bank_account.transactions.last.balance).to eq 400
     end
   end
 end

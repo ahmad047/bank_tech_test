@@ -1,3 +1,5 @@
+require_relative 'transaction'
+
 class BankAccount
   attr_reader :current_balance, :transactions
 
@@ -8,23 +10,13 @@ class BankAccount
 
   def deposit(amount)
     increase_balance(amount)
-    transaction = {
-      date: Time.now.strftime('%d/%m/%Y'),
-      credit: amount,
-      debit: 0,
-      balance: @current_balance
-    }
+    transaction = Transaction.new(credit: amount, balance: @current_balance)
     @transactions << transaction
   end
 
   def withdraw(amount)
     decrease_balance(amount)
-    transaction = {
-      date: Time.now.strftime('%d/%m/%Y'),
-      credit: 0,
-      debit: amount,
-      balance: @current_balance
-    }
+    transaction = Transaction.new(debit: amount, balance: @current_balance)
     @transactions << transaction
   end
 
