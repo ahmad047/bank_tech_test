@@ -6,7 +6,7 @@ class BankAccount
     @transactions = []
   end
 
-  def create_transaction(value)
+  def deposit(value)
     @balance += value
   end
 end

@@ -11,9 +11,9 @@ describe BankAccount do
     expect(bank_account.transactions).to eq []
   end
 
-  describe '#create_transaction' do
-    it 'should update the balance when i create a new transaction' do
-      bank_account.create_transaction(500)
+  describe '#deposit' do
+    it 'should update the balance when i deposit money' do
+      bank_account.deposit(500)
       expect(bank_account.balance).to eq 500
     end
   end
