@@ -10,8 +10,8 @@ class BankAccount
     increase_balance(amount)
     transaction = {
       date: Time.now.strftime('%d/%m/%Y'),
-      debit: 0,
       credit: amount,
+      debit: 0,
       balance: @current_balance
     }
     @transactions << transaction
@@ -21,8 +21,8 @@ class BankAccount
     decrease_balance(amount)
     transaction = {
       date: Time.now.strftime('%d/%m/%Y'),
-      debit: amount,
       credit: 0,
+      debit: amount,
       balance: @current_balance
     }
     @transactions << transaction

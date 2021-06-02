@@ -20,8 +20,8 @@ describe BankAccount do
     it 'should save the transaction on deposit' do
       bank_account.deposit(500)
       expect(bank_account.transactions[0][:balance]).to eq 500
-      expect(bank_account.transactions[0][:debit]).to eq 0
       expect(bank_account.transactions[0][:credit]).to eq 500
+      expect(bank_account.transactions[0][:debit]).to eq 0
       expect(bank_account.transactions[0][:date]).to eq Time.now.strftime('%d/%m/%Y')
     end
   end
@@ -37,8 +37,8 @@ describe BankAccount do
       bank_account.deposit(500)
       bank_account.withdraw(100)
       expect(bank_account.transactions[1][:balance]).to eq 400
+      expect(bank_account.transactions[0][:credit]).to eq 500
       expect(bank_account.transactions[1][:debit]).to eq 100
-      expect(bank_account.transactions[1][:credit]).to eq 0
       expect(bank_account.transactions[1][:date]).to eq Time.now.strftime('%d/%m/%Y')
     end
   end
