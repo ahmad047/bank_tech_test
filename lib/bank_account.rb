@@ -9,4 +9,8 @@ class BankAccount
   def deposit(value)
     @balance += value
   end
+
+  def withdraw(value)
+    @balance -= value
+  end
 end

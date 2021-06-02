@@ -12,9 +12,17 @@ describe BankAccount do
   end
 
   describe '#deposit' do
-    it 'should update the balance when i deposit money' do
+    it 'should update the balance when i deposit funds' do
       bank_account.deposit(500)
       expect(bank_account.balance).to eq 500
+    end
+  end
+
+  describe '#deposit' do
+    it 'should update the balance when i withdraw funds' do
+      bank_account.deposit(500)
+      bank_account.withdraw(400)
+      expect(bank_account.balance).to eq 100
     end
   end
 end
