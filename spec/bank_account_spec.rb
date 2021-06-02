@@ -4,7 +4,7 @@ describe BankAccount do
   let(:bank_account) { described_class.new }
 
   it 'should start with a balance of zero' do
-    expect(bank_account.balance).to eq 0
+    expect(bank_account.current_balance).to eq 0
   end
 
   it 'should start with no transactions' do
@@ -14,7 +14,7 @@ describe BankAccount do
   describe '#deposit' do
     it 'should update the balance when i deposit funds' do
       bank_account.deposit(500)
-      expect(bank_account.balance).to eq 500
+      expect(bank_account.current_balance).to eq 500
     end
 
     it 'should save the transaction' do
@@ -30,7 +30,7 @@ describe BankAccount do
     it 'should update the balance when i withdraw funds' do
       bank_account.deposit(500)
       bank_account.withdraw(400)
-      expect(bank_account.balance).to eq 100
+      expect(bank_account.current_balance).to eq 100
     end
   end
 end

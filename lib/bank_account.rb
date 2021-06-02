@@ -1,8 +1,8 @@
 class BankAccount
-  attr_reader :balance, :transactions
+  attr_reader :current_balance, :transactions
 
   def initialize
-    @balance = 0
+    @current_balance = 0
     @transactions = []
   end
 
@@ -12,7 +12,7 @@ class BankAccount
       date: Time.now.strftime('%d/%m/%Y'),
       debit: 0,
       credit: amount,
-      balance: @balance
+      balance: @current_balance
     }
     @transactions << transaction
   end
@@ -24,10 +24,10 @@ class BankAccount
   private
 
   def increase_balance(amount)
-    @balance += amount
+    @current_balance += amount
   end
 
   def decrease_balance(amount)
-    @balance -= amount
+    @current_balance -= amount
   end
 end
