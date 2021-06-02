@@ -47,4 +47,8 @@ describe BankAccount do
       expect { bank_account.withdraw(10) }.to raise_error('Not enough funds to withdraw. Available balance: 5')
     end
   end
+
+  # describe '#print_statement' do
+  #   it 'should print the statement' do
+  # end
 end
