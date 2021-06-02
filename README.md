@@ -24,6 +24,7 @@ Please follow the instructions below to test this project:
 - run the following commands to test in irb
 
 ```
+bundle install
 irb -r './lib/bank_account.rb' - to open irb requiring this project
 bank_account = BankAccount.new
 bank_account.deposit(value) - to add funds
