@@ -6,7 +6,7 @@ describe Transaction do
   it 'has a date, debit, credit and balance associated with the transaction' do
     expect(transaction.date).to eq Time.now.strftime('%d/%m/%Y')
     expect(transaction.credit).to eq 50
-    expect(transaction.debit).to eq ''
+    expect(transaction.debit).to eq 0
     expect(transaction.balance).to eq 50
   end
 end

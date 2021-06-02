@@ -18,6 +18,14 @@ class BankAccount
     @transactions << Transaction.new(debit: amount, balance: @current_balance)
   end
 
+  def print_statement
+    print_header
+    @transactions.reverse.each {
+      |transaction|
+      puts "#{transaction.date} || #{'%.2f'%transaction.credit} || #{'%.2f'%transaction.debit} || #{'%.2f'%transaction.balance}"
+    }
+  end
+
   private
 
   def increase_balance(amount)
@@ -34,5 +42,9 @@ class BankAccount
 
   def raise_error
     raise "Not enough funds to withdraw. Available balance: #{@current_balance}"
+  end
+
+  def print_header
+    puts "date || credit || debit || balance" unless @transactions.nil?
   end
 end

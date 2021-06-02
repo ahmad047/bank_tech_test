@@ -2,6 +2,7 @@ require 'bank_account'
 
 describe BankAccount do
   let(:bank_account) { described_class.new }
+  let(:date) { Time.now.strftime('%d/%m/%Y') }
 
   it 'should start with a balance of zero' do
     expect(bank_account.current_balance).to eq 0
@@ -19,9 +20,9 @@ describe BankAccount do
 
     it 'should save the transaction on deposit' do
       bank_account.deposit(500)
-      expect(bank_account.transactions.first.date).to eq Time.now.strftime('%d/%m/%Y')
+      expect(bank_account.transactions.first.date).to eq date
       expect(bank_account.transactions.first.credit).to eq 500
-      expect(bank_account.transactions.first.debit).to eq ''
+      expect(bank_account.transactions.first.debit).to eq 0
       expect(bank_account.transactions.first.balance).to eq 500
     end
   end
@@ -36,8 +37,8 @@ describe BankAccount do
     it 'should save the transaction on withdraw' do
       bank_account.deposit(500)
       bank_account.withdraw(100)
-      expect(bank_account.transactions.last.date).to eq Time.now.strftime('%d/%m/%Y')
-      expect(bank_account.transactions.last.credit).to eq ''
+      expect(bank_account.transactions.last.date).to eq date
+      expect(bank_account.transactions.last.credit).to eq 0
       expect(bank_account.transactions.last.debit).to eq 100
       expect(bank_account.transactions.last.balance).to eq 400
     end
@@ -48,7 +49,11 @@ describe BankAccount do
     end
   end
 
-  # describe '#print_statement' do
-  #   it 'should print the statement' do
-  # end
+  describe '#print_statement' do
+    it 'should print the statement' do
+      bank_account.deposit(1000)
+      statement = "date || credit || debit || balance\n#{date} || 1000.00 || || 1000.00"
+      bank_account.print_statement
+    end
+  end
 end
