@@ -16,9 +16,17 @@ describe BankAccount do
       bank_account.deposit(500)
       expect(bank_account.balance).to eq 500
     end
+
+    it 'should save the transaction' do
+      bank_account.deposit(500)
+      expect(bank_account.transactions[0][:balance]).to eq 500
+      expect(bank_account.transactions[0][:debit]).to eq 0
+      expect(bank_account.transactions[0][:credit]).to eq 500
+      expect(bank_account.transactions[0][:date]).to eq Time.now.strftime('%d/%m/%Y')
+    end
   end
 
-  describe '#deposit' do
+  describe '#withdraw' do
     it 'should update the balance when i withdraw funds' do
       bank_account.deposit(500)
       bank_account.withdraw(400)

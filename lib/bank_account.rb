@@ -6,11 +6,28 @@ class BankAccount
     @transactions = []
   end
 
-  def deposit(value)
-    @balance += value
+  def deposit(amount)
+    increase_balance(amount)
+    transaction = {
+      date: Time.now.strftime('%d/%m/%Y'),
+      debit: 0,
+      credit: amount,
+      balance: @balance
+    }
+    @transactions << transaction
   end
 
-  def withdraw(value)
-    @balance -= value
+  def withdraw(amount)
+    decrease_balance(amount)
+  end
+
+  private
+
+  def increase_balance(amount)
+    @balance += amount
+  end
+
+  def decrease_balance(amount)
+    @balance -= amount
   end
 end
